@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+	<title>Main</title>
+</head>
+<style>
+  body{
+    background-color: #36393f;
+  }
+
+  #title{
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Black Han Sans', sans-serif;
+    color: white;
+  }
+
+  a{
+    font-size: 20px;
+    color: white;
+  }
+
+  #menu{
+    display: none;
+  }
+  #menu + label{
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 20px;
+    cursor: pointer;
+    color: #BAA0FA;
+
+  }
+  #menu + label span{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    border-radius: 30px;
+    background: #BAA0FA;
+    transition: all .25s;
+  } 
+  #menu + label span:nth-child(1){
+    top: 0;
+  }
+  #menu + label span:nth-child(2){
+    top: 50%;
+    transform:translateY(-50%);
+  }
+  #menu + label span:nth-child(3){
+    bottom: 0;
+  }
+  #menu:checked + label{z-index:2;}
+
+  #menu:checked + label span {background: #fff;}
+
+  #menu:checked + label span:nth-child(1){
+    top:50%;
+    transform:translateY(-50%) rotate(45deg);
+  }
+  #menu:checked + label span:nth-child(2){
+    opacity: 0;
+  }
+  #menu:checked + label span:nth-child(3){
+    bottom:50%;
+    transform:translateY(50%) rotate(-45deg);
+    
+  }
+    *{box-sizing:border-box}
+
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+
+.mySlides {
+  display: none;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+  
+  .side{
+    width: 400px;
+    height: 100%;
+    background: #BAA0FA;
+    position: fixed;
+    top: 0;
+    right:-400px;
+    z-index: 1;
+    transition: all .25s;
+  }
+  #menu:checked + label + div {
+    right: 0;
+  }
+
+  #mole {
+    color: black;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+</style>
+<body>
+  <script>
+  onload = function(){
+    showSlides(slideIndex);
+    plusSlides(n);
+    currentSlide(n);
+
+  }
+        var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  
+  
+}
+  </script>
+  
+  <input type="checkbox" id="menu">
+  <label for="menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <div class="side">
+    <br><br><br>
+    <p id="title">정.통 사이트</p>
+    <br><br><br>
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="">CodeBall</a>
+    <br><br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="">두더지 잡기</a>
+  </div>
+  
+  <div class="slideshow-container">
+
+  
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <a href="https://kyr-min.github.io/CodeBall/index.html">
+        <img src="https://i.ibb.co/WyffHs6/codeball.jpg" style="width:100%">
+      </a>
+      <div class="text">CodeBall</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <a href="https://inseong04.github.io/Molegame/first.html">
+        <img src="https://i.ibb.co/n60v51k/mole.jpg" style="width:100%">
+      </a>
+      <div id="mole">두더지 잡기</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img src="https://i.ibb.co/Rb4y2dY/ready.jpg" style="width:100%">
+      <div class="text">준비중</div>
+    </div>
+  
+  
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+  
+
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+</body>
+</html>
